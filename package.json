@@ -1,6 +1,6 @@
 {
   "name": "@pocketcdp/pocket-for-node",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "pocketCDP node library",
   "main": "dist/index.js",
   "files": [
@@ -31,9 +31,9 @@
   "author": "migueldf10",
   "license": "PRIVATE",
   "bugs": {
-    "url": "https://github.com/migueldf10"
+    "url": "https://github.com/pocketCDP/pocketcdp-node"
   },
-  "homepage": "https://github.com/migueldf10",
+  "homepage": "https://github.com/pocketCDP/pocketcdp-node",
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "11.0.0",

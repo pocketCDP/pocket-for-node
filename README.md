@@ -3,30 +3,32 @@
 ## Getting started
 
 ```bash
-
-npm install pocketcdp
-
+npm i @pocketcdp/pocket-for-node
 ```
 
 ## Usage
 
 ```javascript
-const API = require("./dist/index");
+
+import PocketCDP from "pocketcdp";
+
+const pocketCDP = new PocketCDP({
+  apiKey: process.env.POCKET_API_BACKEND_KEY,
+  // verbose: true,
+  accountId: process.env.POCKET_API_ACCOUNT_ID,
+  sourceId: process.env.POCKET_API_SOURCE_ID,
+});
 
 try {
-  const pocketCDP = new API.default({
-    apiKey: "API_KEY",
-    verbose: true,
-    apiURL: "http://localhost:5002",
+  responseFromPocket = await pocketCDP.identify({
+    email: email as string,
+    deviceId: pocketContext?.pocketClient,
+    acceptedEmailCommunications: true,
+    customUserProperties: {
+      "subscribed-to-beta-waitlist": "true",
+    },
   });
-
-  pocketCDP.track({ data: "value" });
 } catch (e) {
-  console.log(e);
+  console.info("Error in identify", e);
 }
 ```
-
-TODOs:
-
-- [ ] Get event type definitions.
-- [ ] Add the event type definiton endpoint to the public-API.
