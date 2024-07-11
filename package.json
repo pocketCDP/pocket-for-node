@@ -1,6 +1,6 @@
 {
   "name": "@pocketcdp/pocket-for-node",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "pocketCDP node library",
   "main": "dist/index.js",
   "files": [

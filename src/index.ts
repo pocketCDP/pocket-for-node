@@ -103,22 +103,38 @@ class API {
         console.log(endpoint, "| Identify data ", data);
       }
 
-      const payload = {
-        id: data.userId,
+      const payload: {
+        sourceId: string;
+        userProperties: any;
+        customUserProperties: string;
+        userId?: string;
+        id?: string;
+        deviceId?: string;
+      } = {
+        // id: data.userId,
         sourceId: this.sourceId,
-        userId: data.userId,
-        deviceId: data.deviceId,
+        // userId: data.userId,
+        // deviceId: data.deviceId,
         userProperties: data,
         customUserProperties: JSON.stringify(data.customUserProperties),
       };
 
-      if (!payload.userId || payload.userId === "") {
-        delete payload.id;
-        delete payload.userId;
+      if (data.userId && data.userId !== "") {
+        payload.userId = data.userId;
+        payload.id = data.userId;
       }
 
-      if (!payload.deviceId || payload.deviceId === "") {
-        delete payload.deviceId;
+      // if(data.userId && data.userId !== "")
+
+      // if (
+      //   (payload.userId === "" || payload.userId === null)
+      // ) {
+      //   delete payload.id;
+      //   delete payload.userId;
+      // }
+
+      if (data.deviceId && data.deviceId !== "") {
+        payload.deviceId = data.deviceId;
       }
 
       if (payload.userProperties.deviceId) {
@@ -126,6 +142,14 @@ class API {
       }
       if (payload.userProperties.userId !== undefined) {
         delete payload.userProperties.userId;
+      }
+      if (this.verbose) {
+        console.log("Headers", {
+          "POCKET-ACCOUNT-ID": this.accountId,
+          "Content-Type": "application/json",
+          "POCKET-SOURCE-SECRET-KEY": this.apiKey,
+        });
+        console.log("Payload", payload);
       }
 
       const response = await fetch(endpoint, {
