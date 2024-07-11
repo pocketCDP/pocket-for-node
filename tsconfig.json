@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "ES2020",
+    "lib": ["es6", "dom", "ES2021.String"],
+    "sourceMap": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "rootDir": ".",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "baseUrl": "src/",
+    "skipLibCheck": true,
+    "paths": {
+      "common/*": ["common/*"],
+      "components/*": ["components/*"],
+      "hooks/*": ["hooks/*"],
+      "utils/*": ["utils/*"],
+      "styles/*": ["styles/*"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest"
+  ],
+  "types": ["typePatches"]
+}
